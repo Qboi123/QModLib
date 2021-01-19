@@ -58,7 +58,7 @@ public class WindowCloseEvent extends Event {
             widget.onPress = (button) -> {
                 boolean flag = MinecraftForge.EVENT_BUS.post(new WindowCloseEvent(Source.QUIT_BUTTON));
                 if (!flag) {
-                    mc.close();
+                    mc.shutdown();
                 }
             };
             initialized = true;

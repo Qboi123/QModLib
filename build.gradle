@@ -156,7 +156,6 @@ dependencies {
 jar.finalizedBy('reobfJar')
 
 task("uploadJars", dependsOn: "build") {
-
     description = "uploads JARs"
 
     if (project.hasProperty("local_maven") || project.hasProperty("sftp_maven")) {
