@@ -118,6 +118,11 @@ repositories {
     }
 }
 
+configurations {
+    // configuration that holds jars to include in the jar
+    extraLibs
+}
+
 dependencies {
     implementation 'org.jetbrains:annotations:20.1.0'
 
@@ -125,6 +130,18 @@ dependencies {
     // that the dep is a ForgeGradle 'patcher' dependency. And it's patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.16.3-34.1.42'
+
+    extraLibs group: 'commons-io', name: 'commons-io', version: '2.8.0'
+    extraLibs group: 'commons-codec', name: 'commons-codec', version: '1.15'
+    extraLibs group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
+    extraLibs group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
+    extraLibs group: 'org.apache.commons', name: 'commons-collections4', version: '4.4'
+    extraLibs group: 'org.apache.commons', name: 'commons-text', version: '1.9'
+    extraLibs group: 'org.apache.commons', name: 'commons-configuration2', version: '2.7'
+    extraLibs group: 'org.apache.commons', name: 'commons-jexl', version: '2.1.1'
+    extraLibs group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.7.0'
+    extraLibs group: 'xml-resolver', name: 'xml-resolver', version: '1.2'
+    extraLibs group: 'org.yaml', name: 'snakeyaml', version: '1.26'
 
     compile group: 'commons-io', name: 'commons-io', version: '2.8.0'
     compile group: 'commons-codec', name: 'commons-codec', version: '1.15'
@@ -153,6 +170,25 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 }
 
+// Example for how to get properties into the manifest for reading by the runtime..
+jar {
+    manifest {
+        attributes([
+                "Specification-Title": "qmodlib",
+                "Specification-Vendor": "QTech Community",
+                "Specification-Version": project.version,
+                "Implementation-Title": project.name,
+                "Implementation-Version": "${version}",
+                "Implementation-Vendor" :"QTech Community",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "qforgemod.mixins.json"
+        ])
+    }
+    from {
+        configurations.extraLibs.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
 jar.finalizedBy('reobfJar')
 
 task("uploadJars", dependsOn: "build") {
@@ -163,14 +199,18 @@ task("uploadJars", dependsOn: "build") {
         uploadArchives {
             repositories {
                 if (project.hasProperty("local_maven")) {
+                    //noinspection GrUnresolvedAccess
                     mavenDeployer {
+                        //noinspection GrUnresolvedAccess
                         repository(url: "file://${local_maven}")
                     }
                 }
                 if (project.hasProperty("sftp_maven")) {
                     repositories.mavenDeployer {
                         configuration = configurations.deployerJars
+                        //noinspection GrUnresolvedAccess
                         repository(url: "sftp://${sftp_maven}") {
+                            //noinspection GrUnresolvedAccess
                             authentication(userName: "${sftp_username}", privateKey: "${sftp_key}")
                         }
                     }

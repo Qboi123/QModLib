@@ -54,14 +54,16 @@ public class WindowCloseEvent extends Event {
             }
             MainMenuScreen mainMenu = (MainMenuScreen) gui;
             List<Widget> buttons = mainMenu.buttons;
-            Button widget = (Button) buttons.get(buttons.size() - 2);
-            widget.onPress = (button) -> {
-                boolean flag = MinecraftForge.EVENT_BUS.post(new WindowCloseEvent(Source.QUIT_BUTTON));
-                if (!flag) {
-                    mc.shutdown();
-                }
-            };
-            initialized = true;
+            if (buttons.size() >= 2) {
+                Button widget = (Button) buttons.get(buttons.size() - 2);
+                widget.onPress = (button) -> {
+                    boolean flag = MinecraftForge.EVENT_BUS.post(new WindowCloseEvent(Source.QUIT_BUTTON));
+                    if (!flag) {
+                        mc.shutdown();
+                    }
+                };
+                initialized = true;
+            }
         }
     }
 
