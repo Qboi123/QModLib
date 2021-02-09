@@ -1,8 +1,16 @@
 package com.qsoftware.modlib.common;
 
+import com.qsoftware.modlib.api.annotations.FieldsAreNonnullByDefault;
+import com.qsoftware.modlib.common.interfaces.Formattable;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.util.text.TextFormatting;
 
-public class Angle implements com.qsoftware.modlib.common.IFormattable {
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@FieldsAreNonnullByDefault
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
+public class Angle implements Formattable {
     private final double degrees;
 
     public Angle(double degrees) {

@@ -8,14 +8,14 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
-@Deprecated
+@SuppressWarnings("unused")
 @FieldsAreNonnullByDefault
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class ItemProvider implements IItemProvider {
+public class ItemSelfProvider implements IItemProvider {
     private final Item item;
 
-    public ItemProvider(Item item) {
+    public ItemSelfProvider(Item item) {
         this.item = item;
     }
 

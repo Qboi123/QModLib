@@ -3,7 +3,9 @@ package com.qsoftware.modlib.graphics;
 import com.google.common.annotations.Beta;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
+import com.qsoftware.modlib.api.annotations.FieldsAreNonnullByDefault;
 import com.qsoftware.modlib.common.geom.RectangleUV;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.Screen;
@@ -12,13 +14,19 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.awt.*;
 
 /**
+ * Minecraft Graphics utilities.
+ *
  * @author Qboi123
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "FieldCanBeLocal"})
 @Beta
+@FieldsAreNonnullByDefault
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class MCGraphics {
     private final MatrixStack matrixStack;
 //    private final Screen gui;

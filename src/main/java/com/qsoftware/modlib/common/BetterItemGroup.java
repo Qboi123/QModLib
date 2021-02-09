@@ -19,23 +19,22 @@ import java.util.Objects;
 import java.util.function.Function;
 
 @SuppressWarnings("unused")
-@Deprecated
 @FieldsAreNonnullByDefault
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class QItemGroup extends ItemGroup {
+public class BetterItemGroup extends ItemGroup {
     private final ItemStack icon;
     private final ResourceLocation rl;
     private final String labelName;
 
-    public QItemGroup(ResourceLocation rl, ItemStack icon) {
+    public BetterItemGroup(ResourceLocation rl, ItemStack icon) {
         super(rl.getNamespace() + "_" + rl.getPath().replaceAll("[/.]", "_"));
         this.icon = icon;
         this.rl = rl;
         this.labelName = rl.getPath().replaceAll("[/.]", "_");
     }
 
-    public QItemGroup(ResourceLocation rl, IItemProvider itemProvider) {
+    public BetterItemGroup(ResourceLocation rl, IItemProvider itemProvider) {
         super(rl.getNamespace() + "_" + rl.getPath().replaceAll("[/.]", "_"));
         this.icon = new ItemStack(itemProvider);
         this.rl = rl;

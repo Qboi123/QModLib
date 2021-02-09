@@ -1,6 +1,7 @@
 package com.qsoftware.modlib.event;
 
 import com.qsoftware.modlib.QModLib;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.MainMenuScreen;
 import net.minecraft.client.gui.screen.Screen;
@@ -16,11 +17,15 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.glfw.GLFW;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@SuppressWarnings("unused")
 @Cancelable
 @Mod.EventBusSubscriber(modid = QModLib.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 @OnlyIn(Dist.CLIENT)
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class WindowCloseEvent extends Event {
     private static boolean initialized;
     private final Source source;

@@ -1,6 +1,7 @@
 package com.qsoftware.modlib;
 
 import com.mojang.brigadier.CommandDispatcher;
+import com.qsoftware.modlib.api.annotations.FieldsAreNonnullByDefault;
 import com.qsoftware.modlib.silentlib.advancements.LibTriggers;
 import com.qsoftware.modlib.silentlib.command.internal.DisplayNBTCommand;
 import com.qsoftware.modlib.silentlib.command.internal.TeleportCommand;
@@ -8,6 +9,7 @@ import com.qsoftware.modlib.silentlib.crafting.recipe.DamageItemRecipe;
 import com.qsoftware.modlib.silentlib.data.TestRecipeProvider;
 import com.qsoftware.modlib.silentlib.item.ILeftClickItem;
 import com.qsoftware.modlib.silentlib.network.internal.QModLibNetwork;
+import mcp.MethodsReturnNonnullByDefault;
 import net.minecraft.command.CommandSource;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -17,6 +19,11 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.event.lifecycle.*;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@FieldsAreNonnullByDefault
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 class SideProxy {
     SideProxy() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::gatherData);

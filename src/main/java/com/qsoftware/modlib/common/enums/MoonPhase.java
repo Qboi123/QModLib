@@ -1,5 +1,13 @@
-package com.qsoftware.modlib.common;
+package com.qsoftware.modlib.common.enums;
 
+import com.qsoftware.modlib.api.annotations.FieldsAreNonnullByDefault;
+import mcp.MethodsReturnNonnullByDefault;
+
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@FieldsAreNonnullByDefault
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public enum MoonPhase {
     FULL(0),
     WANING_GIBBOUS(1),
