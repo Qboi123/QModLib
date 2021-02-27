@@ -7,7 +7,7 @@ https://www.curseforge.com/minecraft/mc-mods/qmodlib
 ## Mods that uses this library:
  * [QForgeMod](https://www.curseforge.com/minecraft/mc-mods/qforgemod)
 
-## Using as API
+<!--## Using as API
 1) Set environment variables for your OS. ([Windows](https://www.tenforums.com/tutorials/121855-edit-user-system-environment-variables-windows.html), [Linux](https://www.serverlab.ca/tutorials/linux/administration-linux/how-to-set-environment-variables-in-linux/), [Mac](https://medium.com/@himanshuagarwal1395/setting-up-environment-variables-in-macos-sierra-f5978369b255#:~:text=If%20the%20environment%20variable%20you,variable%20name%20and%20its%20value.))  
    Add one with the name `GITHUB_USERNAME` and the value as your github username  
    Add one with the name `GITHUB_TOKEN` and the value as your [token](https://github.com/settings/tokens).
@@ -42,4 +42,4 @@ https://www.curseforge.com/minecraft/mc-mods/qmodlib
    }
    ```
 6) Reload gradle.
-7) You're done!
+7) You're done!-->
