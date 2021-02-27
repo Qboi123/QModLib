@@ -35,6 +35,5 @@ https://www.curseforge.com/minecraft/mc-mods/qmodlib
        // Other dependencies here. //
    }
    ```
-5) Replace the `com.example:package` or `com.example:test` with `com.qsoftware.forgemod:qforgemod:2.0.1034`. *Maybe needed to change version*
 6) Reload gradle.
 7) You're done!
