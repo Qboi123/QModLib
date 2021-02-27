@@ -25,7 +25,7 @@ https://www.curseforge.com/minecraft/mc-mods/qmodlib
    }
    ```
 3) Add the dependencies (`com.qsoftware:qforgemod`, `com.qsoftware:qmodlib`)
-   ```
+   ```gradle
    dependencies {
        // Other dependencies here. //
        
