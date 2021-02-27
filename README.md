@@ -29,9 +29,15 @@ https://www.curseforge.com/minecraft/mc-mods/qmodlib
    dependencies {
        // Other dependencies here. //
        
-       compileOnly fg.deobf("com.qsoftware:qmodlib")
-       runtimeOnly fg.deobf("com.qsoftware:qmodlib")
-       
+       compileOnly( fg.deobf(group: "com.qsoftware", name: "qmodlib", version: "1.0.+")) {
+           exclude group: "net.minecraftforge", name: "forge", version: "+"
+           exclude group: "net.minecraftforge", name: "forge", version: "+", classifier: "launcher"
+       }
+       runtimeOnly( fg.deobf(group: "com.qsoftware", name: "qmodlib", version: "1.0.+")) {
+           exclude group: "net.minecraftforge", name: "forge", version: "+"
+           exclude group: "net.minecraftforge", name: "forge", version: "+", classifier: "launcher"
+       }
+
        // Other dependencies here. //
    }
    ```
