@@ -25,6 +25,7 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
 String baseVersion = project.property("baseVersion").toString()
+String versionSuffix = project.property("versionSuffix").toString()
 
 // Read build number file.
 FileInputStream fileInputStream = new FileInputStream("buildnumber.txt")
@@ -43,13 +44,43 @@ output.write(newBuild.getBytes())
 output.flush()
 output.close()
 
-
-
 group = 'com.qsoftware'
-version = baseVersion + '.' + buildNumber;
+version = baseVersion + '.' + buildNumber + "-" + versionSuffix;
 archivesBaseName = 'qmodlib'
 
+println("Version: " + version)
+
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8'
+
+publishing {
+    repositories {
+//        maven {
+//            name = "GitHubPackages-QModLib"
+//            url = uri("https://maven.pkg.github.com/Qboi123/QModLib")
+//            credentials {
+//                username = System.getenv("GITHUB_USERNAME")
+//                password = System.getenv("GITHUB_TOKEN")
+//            }
+//        }
+        maven {
+            name = "GitHubPackages-QFM"
+            url = uri("https://maven.pkg.github.com/Qboi123/QForgeMod")
+            credentials {
+                username = System.getenv("GITHUB_USERNAME")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+    dependencies {
+
+    }
+
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
+        }
+    }
+}
 
 minecraft {
     // The mappings can be changed at any time, and must be in the following format.
